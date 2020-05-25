@@ -1,0 +1,86 @@
+@(BBIs: Seq[(Borrower, BookItem, Boolean)])(implicit request: RequestHeader)
+
+@main("Lista BorrowerBookItem") {
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Podsumowanie wypożyczenia</h1>
+        </br>
+        <form action="@routes.HomeController.index" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+
+        </br>
+
+
+
+        @helper.CSRF.formField
+
+        <div id="exercisesTable">
+            <table class="table table-condensed" id="catalogIndexTable">
+                <thead style="font-size: 25px">
+                    <tr>
+                        <td>Name</td>
+                        <td>Surname</td>
+                        <td>Address</td>
+                        <td>--------</td>
+                        <td>ISBN</td>
+                        <td>Numer</td>
+                        <td>Status</td>
+                        <td>Modyfikuj</td>
+                        <td>Zakończ wypozyczenie</td>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 15px;">
+                    @for(bbi <- BBIs){
+                        <tr class="clientRow">
+                            <td class="">@bbi._1.Name</td>
+                            <td class="">@bbi._1.Surname</td>
+                            <td class="">@bbi._1.Address</td>
+                            <td class="">-------</td>
+                            <td class="">@bbi._2.ISBN</td>
+                            <td class="">@bbi._2.number</td>
+                            <td class="">@bbi._2.isComplete</td>
+                            <td class="">
+                                <form action="@routes.BorrowerBookItemController.delete(bbi._1.id, bbi._2.id)" method="get">
+                                    <input type="submit" value="Usuń"/>
+                                </form>
+                            </td>
+                            @if(!bbi._3){
+                                <td class="">
+                                    <form action="@routes.BorrowerBookItemController.finish(bbi._1.id, bbi._2.id)" method="Post">
+                                        @helper.CSRF.formField
+                                        <input type="submit" value="Zakoncz"/>
+                                    </form>
+                                </td>
+                            }
+                            @if(bbi._3){
+                            <td class="">
+                                Zakończono
+                            </td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <style>
+            td{
+                border: solid;
+            }
+            th{
+                border: solid;
+            }
+
+
+    </style>
+
+
+
+
+}

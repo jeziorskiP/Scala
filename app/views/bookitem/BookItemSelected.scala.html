@@ -1,0 +1,63 @@
+@(bookitems: Seq[BookItem])(implicit request: RequestHeader)
+
+@main("Spis egzemplarzy-selected") {
+
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Spis egzemplarzy-selected</h1>
+        </br>
+        <div id="exercisesTable">
+            <table class="table table-striped" id="catalogIndexTable"  >
+                <thead style="font-size: 25px">
+                    <tr>
+                        <th>ID</th>
+                        <th>Numer</th>
+                        <th>ISBN</th>
+                        <th>Wypożyczona</th>
+                        <th>Modyfikuj</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 15px;">
+                @for(bookitem <- bookitems){
+                    <tr class="clientRow" >
+                        <td class="">@bookitem.id</td>
+                        <td class="">@bookitem.number</td>
+                        <td class="">@bookitem.ISBN</td>
+                        <td class="">@bookitem.isComplete</td>
+                        @if(bookitem.isComplete == true){
+                            <td class="">
+                                <form action="@routes.BookItemController.delete(bookitem.id)" method="get">
+                                    <input type="submit" value="Usuń"/>
+                                </form>
+                            </td>
+                        }
+                        @if(bookitem.isComplete == false){
+                            <td class="">
+                                ---------
+                            </td>
+                        }
+
+
+
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+    </div>
+}

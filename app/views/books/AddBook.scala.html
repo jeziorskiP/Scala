@@ -1,0 +1,52 @@
+@()(implicit request: RequestHeader)
+
+@main("Dodawanie ksiązki") {
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Dodawanie książki</h1>
+        </br>
+
+
+    <form method="post" action="@routes.BooksController.add()">
+        @helper.CSRF.formField
+
+        </br>
+        <label for="title">Tytuł</label>
+        <input type="text" name="title"></input>
+        </br>
+        <label for="author">Autor</label>
+        <input type="text" name="author"></input>
+        </br>
+        <label for="rokWydania">Rok Wydania</label>
+        <input type="text" name="rokWydania"></input>
+        </br>
+        <label for="ISBN">ISBN</label>
+        <input type="text" name="ISBN"></input>
+        </br>
+        <label for="quantity">Ilość</label>
+        <input type="text" name="quantity"></input>
+        </br>
+
+        <input type="hidden" name="current" value="0"></input>
+
+        <input type="submit"></input>
+
+
+
+
+
+    </form>
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+    </div>
+}

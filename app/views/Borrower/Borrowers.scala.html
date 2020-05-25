@@ -1,0 +1,89 @@
+@(borrowers: Seq[Borrower])(implicit request: RequestHeader)
+
+@main("Lista Borrowers") {
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Wykaz Wypożyczających</h1>
+        </br>
+        <form action="@routes.HomeController.index" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+
+        </br>
+        <div style="width: 100%">
+            <a class="btn btn-success" href="@routes.BorrowerController.addForm()">DODAJ</a>
+        </div>
+        </br>
+        <div id="exercisesTable">
+            <table class="table table-striped" id="catalogIndexTable"  >
+                <thead style="font-size: 25px">
+                    <tr>
+                        <th>ID</th>
+                        <th>Numer</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Adres</th>
+                        <th>Saldo</th>
+                        <th>Usuń</th>
+                        <th>Modyfikuj</th>
+                        <th>Zapłać</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 15px;">
+                    @for(borrower <- borrowers){
+                        <tr class="clientRow" >
+                            <td class="">@borrower.id</td>
+                            <td class="">@borrower.number</td>
+                            <td class="">@borrower.Name</td>
+                            <td class="">@borrower.Surname</td>
+                            <td class="">@borrower.Address</td>
+                            <td class="">@borrower.Balance</td>
+                            <td class="">
+                                <form action="@routes.BorrowerController.delete(borrower.id)" method="get">
+                                    <input type="submit" value="Usuń"/>
+                                </form>
+                            </td>
+                            <td class="">
+                                <form action="@routes.BorrowerController.edit(borrower.id)" method="get">
+                                    <input type="submit" value="Modyfikuj"/>
+                                </form>
+                            </td>
+                            <td class="">
+                                <form action="@routes.BorrowerController.addBookToBorrower(borrower.id)" method="get">
+                                    <input type="submit" value="Dodaj wypożyczenie"/>
+                                </form>
+
+
+                            </td>
+                            <td class="">
+                                <form action="@routes.BorrowerController.pay(borrower.id)" method="get">
+                                    <input type="submit" value="Zapłać"/>
+                                </form>
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+
+}

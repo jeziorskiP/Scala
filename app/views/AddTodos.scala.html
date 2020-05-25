@@ -1,0 +1,14 @@
+@(todos: Seq[Todo])(implicit requestHeader: RequestHeader)
+
+@main("Lista Todo") {
+
+
+
+<form method="post" action="@routes.TodoController.add()">
+    @helper.CSRF.formField
+    <input type="text" name="New todo"></input>
+    <input type="submit"></input>
+</form>
+
+
+}

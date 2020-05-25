@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\Global.scala:8:16: method onBadRequest overrides nothing[0m
+[0m[[0m[31merror[0m] [0m[0m  override def onBadRequest(request: RequestHeader, error: String) = {[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

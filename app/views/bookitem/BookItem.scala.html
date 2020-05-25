@@ -1,0 +1,86 @@
+@(bookitems: Seq[BookItem])(implicit request: RequestHeader)
+
+@main("Dodawanie ksiązki") {
+
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Spis egzemplarzy</h1>
+        </br>
+        <form action="@routes.BooksController.getAll()" method="get">
+            <input type="submit" value="Powrót"/>
+        </form>
+
+        </br>
+        <div style="width: 100%">
+        </br>
+            <form method="post" action="@routes.BookItemController.getByISBN()">
+            @helper.CSRF.formField
+
+                <input type="hidden" name="book_id" value="0"></input>
+
+                <input type="hidden" name="isComplete" value="false"></input>
+
+                <input type="hidden" name="number" value="0"></input>
+
+                <label for="ISBN">ISBN</label>
+                <input type="text" name="ISBN" ></input>
+
+                <input type="submit" value="Szukaj">
+
+            </br>
+            </br>     </br>
+            </form>
+        </div>
+        <div id="exercisesTable">
+            <table class="table table-striped" id="catalogIndexTable"  >
+                <thead style="font-size: 25px">
+                    <tr>
+                        <th>ID</th>
+                        <th>Numer</th>
+                        <th>ISBN</th>
+                        <th>Dostępna</th>
+                        <th>Modyfikuj</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 15px;">
+                @for(bookitem <- bookitems){
+                    <tr class="clientRow" >
+                        <td class="">@bookitem.id</td>
+                        <td class="">@bookitem.number</td>
+                        <td class="">@bookitem.ISBN</td>
+                        <td class="">@bookitem.isComplete</td>
+                        @if(bookitem.isComplete == true){
+                            <td class="">
+                                <form action="@routes.BookItemController.delete(bookitem.id)" method="get">
+                                    <input type="submit" value="Usuń"/>
+                                </form>
+                            </td>
+                        }
+                        @if(bookitem.isComplete == false){
+                            <td class="">------
+                            </td>
+                        }
+
+
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+    </div>
+}

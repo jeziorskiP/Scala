@@ -1,0 +1,78 @@
+@(books: Seq[Book])(implicit request: RequestHeader)
+
+@main("Lista Todo") {
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Wykaz ksiązek</h1>
+        </br>
+        <form action="@routes.HomeController.index" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+
+        </br>
+        <div style="width: 100%">
+            <a class="btn btn-success" href="@routes.BooksController.addForm()">DODAJ</a>
+        </div>
+        </br>
+        <div id="exercisesTable">
+            <table class="table table-condensed" id="catalogIndexTable">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nazwa</td>
+                        <td>Autor</td>
+                        <td>Rok Wydania</td>
+                        <td>ISBN</td>
+                        <td>Ilosc</td>
+                        <td>Na stanie</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(book <- books){
+                        <tr class="clientRow">
+                            <td class="">@book.id</td>
+                            <td class="">@book.title</td>
+                            <td class="">@book.author</td>
+                            <td class="">@book.rokWydania</td>
+                            <td class="">@book.ISBN</td>
+                            <td class="">@book.quantity</td>
+                            <td class="">@book.current</td>
+                            <td class="">
+                                <form action="@routes.BooksController.delete(book.id)" method="get">
+                                    <input type="submit" value="Delete single record"/>
+                                </form>
+
+
+                            </td>
+                            <td class="">
+                                <form action="@routes.BookItemController.getAllByBookId(book.id)" method="get">
+                                    <input type="submit" value="Show"/>
+                                </form>
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <style>
+            td{
+                border: solid;
+            }
+            th{
+                border: solid;
+            }
+
+
+    </style>
+}
