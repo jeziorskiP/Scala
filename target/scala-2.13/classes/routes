@@ -4,58 +4,58 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                                   controllers.HomeController.index
-GET     /explore                            controllers.HomeController.explore
-GET     /tutorial                           controllers.HomeController.tutorial
-GET     /booklist                           controllers.BookController.BookList
+GET     /                                       controllers.HomeController.index
+GET     /explore                                controllers.HomeController.explore
+GET     /tutorial                               controllers.HomeController.tutorial
+GET     /booklist                               controllers.BookController.BookList
 
 # api controllers mapping
-GET     /todos                              controllers.TodoController.getAll
-GET     /todos/:id                          controllers.TodoController.getById(id: Long)
-POST    /todos/add                          controllers.TodoController.add
-PUT     /todos/update/:id                   controllers.TodoController.update(id: Long)
-GET  /todos/delete/:id                   controllers.TodoController.delete(id: Long)
+GET     /todos                                  controllers.TodoController.getAll
+GET     /todos/:id                              controllers.TodoController.getById(id: Long)
+POST    /todos/add                              controllers.TodoController.add
+PUT     /todos/update/:id                       controllers.TodoController.update(id: Long)
+GET  /todos/delete/:id                          controllers.TodoController.delete(id: Long)
 
 # Books controllers mapping
-GET     /books                              controllers.BooksController.getAll
-GET     /books/addForm                              controllers.BooksController.addForm
-GET     /books/:id                          controllers.BooksController.getById(id: Long)
-POST    /books/add                          controllers.BooksController.add
-PUT     /books/update/:id                   controllers.BooksController.update(id: Long)
-GET     /books/delete/:id                   controllers.BooksController.delete(id: Long)
+GET     /books                                  controllers.BooksController.getAll
+GET     /books/addForm                          controllers.BooksController.addForm
+GET     /books/:id                              controllers.BooksController.getById(id: Long)
+POST    /books/add                              controllers.BooksController.add
+PUT     /books/update/:id                       controllers.BooksController.update(id: Long)
+GET     /books/delete/:id                       controllers.BooksController.delete(id: Long)
 
 # Borrower controllers mapping
-GET     /borrower                              controllers.BorrowerController.getAll
-GET     /borrower/addForm                      controllers.BorrowerController.addForm
-GET     /borrower/:id                          controllers.BorrowerController.getById(id: Long)
-POST    /borrower/add                          controllers.BorrowerController.add
+GET     /borrower                               controllers.BorrowerController.getAll
+GET     /borrower/addForm                       controllers.BorrowerController.addForm
+#GET     /borrower/:id                           controllers.BorrowerController.getById(id: Long)
+POST    /borrower/add                           controllers.BorrowerController.add
 POST     /borrower/update/:id                   controllers.BorrowerController.update(id: Long)
-GET     /borrower/edit/:id                   controllers.BorrowerController.edit(id: Long)
+GET     /borrower/edit/:id                      controllers.BorrowerController.edit(id: Long)
 GET     /borrower/delete/:id                   controllers.BorrowerController.delete(id: Long)
 GET     /borrower/addBookToBorrower/:borrowerId                   controllers.BorrowerController.addBookToBorrower(borrowerId: Long)
-GET     /borrower/pay/:id                   controllers.BorrowerController.pay(id: Long)
+GET     /borrower/pay/:id                       controllers.BorrowerController.pay(id: Long)
 
 # BookItem controllers mapping
-GET     /bookitem                              controllers.BookItemController.getAll
-GET     /bookitem/:id                          controllers.BookItemController.getById(id: Long)
+GET     /bookitem                               controllers.BookItemController.getAll
+#GET     /bookitem/:id                           controllers.BookItemController.getById(id: Long)
 GET     /bookitemByBook/:id                     controllers.BookItemController.getAllByBookId(id : Long)
-POST    /bookitem/add                          controllers.BookItemController.add
-PUT     /bookitem/update/:id                   controllers.BookItemController.update(id: Long)
-GET     /bookitem/delete/:id                   controllers.BookItemController.delete(id: Long)
-POST     /addBIB/borrowerId                            controllers.BookItemController.addBIB(borrowerId: Long)
+POST    /bookitem/add                           controllers.BookItemController.add
+PUT     /bookitem/update/:id                    controllers.BookItemController.update(id: Long)
+GET     /bookitem/delete/:id                    controllers.BookItemController.delete(id: Long)
+POST     /addBIB/borrowerId                     controllers.BookItemController.addBIB(borrowerId: Long)
 
-POST     /bookitem/getByISBN                            controllers.BookItemController.getByISBN
+POST     /bookitem/getByISBN                    controllers.BookItemController.getByISBN
 
 
 # BookItem controllers mapping
-GET     /borrowerbookitem                              controllers.BorrowerBookItemController.getAll
-GET     /borrowerbookitem2                              controllers.BorrowerBookItemController.getAll2
-GET     /borrowerbookitem/bi/:id                          controllers.BorrowerBookItemController.getByBookItemId(id: Long)
-GET     /borrowerbookitem/br/:id                          controllers.BorrowerBookItemController.getByBorrowerId(id: Long)
-POST    /borrowerbookitem/add                          controllers.BorrowerBookItemController.add
-PUT     /borrowerbookitem/update/:id                   controllers.BorrowerBookItemController.update(id: Long)
+GET     /borrowerbookitem                       controllers.BorrowerBookItemController.getAll
+GET     /borrowerbookitem2                      controllers.BorrowerBookItemController.getAll2
+#GET     /borrowerbookitem/bi/:id                controllers.BorrowerBookItemController.getByBookItemId(id: Long)
+#GET     /borrowerbookitem/br/:id                controllers.BorrowerBookItemController.getByBorrowerId(id: Long)
+POST    /borrowerbookitem/add                   controllers.BorrowerBookItemController.add
+PUT     /borrowerbookitem/update/:id            controllers.BorrowerBookItemController.update(id: Long)
 GET     /borrowerbookitem/delete/:borrowerId/:BookItemId                  controllers.BorrowerBookItemController.delete(borrowerId: Long, BookItemId: Long)
-GET     /borrowerbookitem/getBBIByNumber/                  controllers.BorrowerBookItemController.getBBIByNumber
+GET     /borrowerbookitem/getBBIByNumber/       controllers.BorrowerBookItemController.getBBIByNumber
 GET     /borrowerbookitem/filter                controllers.BorrowerBookItemController.filter
 POST     /borrowerbookitem/finish/:borrowerId/:BookItemId                controllers.BorrowerBookItemController.finish(borrowerId: Long, BookItemId: Long)
 

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Sources/Test2/play-samples-play-scala-hello-world-tutorial/conf/routes
-// @DATE:Sun May 17 14:50:07 CEST 2020
+// @DATE:Wed May 27 11:38:01 CEST 2020
 
 import play.api.mvc.Call
 
@@ -75,12 +75,6 @@ package controllers {
     def add(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "borrower/add")
-    }
-  
-    // @LINE:30
-    def getById(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "borrower/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
     }
   
     // @LINE:35
@@ -272,12 +266,6 @@ package controllers {
       Call("POST", _prefix + { _defaultPrefix } + "bookitem/add")
     }
   
-    // @LINE:40
-    def getById(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "bookitem/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
-    }
-  
     // @LINE:45
     def addBIB(borrowerId:Long): Call = {
       
@@ -315,18 +303,6 @@ package controllers {
     def getAll2(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "borrowerbookitem2")
-    }
-  
-    // @LINE:53
-    def getByBookItemId(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "borrowerbookitem/bi/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
-    }
-  
-    // @LINE:54
-    def getByBorrowerId(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "borrowerbookitem/br/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
     }
   
     // @LINE:56

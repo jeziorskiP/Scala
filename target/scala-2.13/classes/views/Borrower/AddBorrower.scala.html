@@ -1,0 +1,42 @@
+@()(implicit request: RequestHeader)
+
+@main("Dodawanie wypożyczającego") {
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Dodawanie wypożyczającego</h1>
+        </br>
+
+
+    <form method="post" action="@routes.BorrowerController.add()">
+        @helper.CSRF.formField
+
+
+        <input type="hidden" name="number" value="0" ></input>
+        </br>
+        <label for="Name">Imię</label>
+        <input type="text" name="Name""></input>
+        </br>
+        <label for="Surname">Nazwisko</label>
+        <input type="text" name="Surname"></input>
+        </br>
+        <label for="Address">Adres</label>
+        <input type="text" name="Address"></input>
+        </br>
+        <input type="hidden" name="Balance" value="0.00"></input>
+        </br>
+        <input type="submit"></input>
+    </form>
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+    </div>
+}

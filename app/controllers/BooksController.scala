@@ -25,16 +25,12 @@ class BooksController @Inject()(
 
   def getAll() = Action.async { implicit request: Request[AnyContent] =>
     bookService.listAllItems map { items =>
-      //Ok(Json.toJson(items))
       Ok(views.html.books.Books( (items)))
     }
-
   }
 
-  def getById(id: Long) = Action.async { implicit request: Request[AnyContent] =>
-    bookService.getItem(id) map { item =>
-      Ok(Json.toJson(item))
-    }
+  def addForm() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.books.AddBook())
   }
 
   def add() = Action.async { implicit request: Request[AnyContent] =>
@@ -48,10 +44,6 @@ class BooksController @Inject()(
         val newBookItem = Book(0, data.title, data.author, data.ISBN, data.rokWydania, data.quantity,data.quantity)
         bookService.addItem(newBookItem).map( _ => Redirect(routes.BooksController.getAll))
       })
-  }
-
-  def addForm() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.books.AddBook())
   }
 
   def update(id: Long) = Action.async { implicit request: Request[AnyContent] =>
@@ -71,10 +63,20 @@ class BooksController @Inject()(
   def delete(id: Long) = Action.async { implicit request: Request[AnyContent] =>
     bookService.deleteItem(id).map { res =>
       Redirect(routes.BooksController.getAll)
-
     }.recover {
       case e: Throwable => BadRequest( views.html.errors.onError(e) )
     }
   }
+
+
+
+  def getById(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+    bookService.getItem(id) map { item =>
+      Ok(Json.toJson(item))
+    }
+  }
+
+
+
 
 }

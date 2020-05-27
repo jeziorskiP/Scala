@@ -1,0 +1,49 @@
+@(borrowerId: Long)(implicit request: RequestHeader)
+
+@main("Dodawanie ksiązki do wypozczenia") {
+
+
+    <div id="pn">
+        </br>
+
+        <h1 style="font-size: 40px">Dodawanie książki do wypożyczenia</h1>
+        </br>  <form method="post" action="@routes.BookItemController.addBIB(borrowerId)">
+        @helper.CSRF.formField
+
+        </br>
+
+        <input type="hidden" name="book_id" value="0"></input>
+
+
+        <input type="hidden" name="ISBN" value="000000000000"></input>
+
+
+        <input type="hidden" name="isComplete" value="true"></input>
+
+        <label for="number">Numer książki</label>
+        <input type="text" name="number"></input>
+    </br>
+
+
+        <input type="submit"></input>
+
+
+
+
+
+    </form>
+
+
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+    </div>
+}

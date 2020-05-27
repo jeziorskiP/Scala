@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Sources/Test2/play-samples-play-scala-hello-world-tutorial/conf/routes
-// @DATE:Sun May 17 14:50:07 CEST 2020
+// @DATE:Wed May 27 11:38:01 CEST 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -104,16 +104,6 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "borrower/add"})
-        }
-      """
-    )
-  
-    // @LINE:30
-    def getById: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.BorrowerController.getById",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "borrower/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
         }
       """
     )
@@ -408,16 +398,6 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:40
-    def getById: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.BookItemController.getById",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "bookitem/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
     // @LINE:45
     def addBIB: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BookItemController.addBIB",
@@ -474,26 +454,6 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "borrowerbookitem2"})
-        }
-      """
-    )
-  
-    // @LINE:53
-    def getByBookItemId: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.BorrowerBookItemController.getByBookItemId",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "borrowerbookitem/bi/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
-        }
-      """
-    )
-  
-    // @LINE:54
-    def getByBorrowerId: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.BorrowerBookItemController.getByBorrowerId",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "borrowerbookitem/br/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("id", id0))})
         }
       """
     )

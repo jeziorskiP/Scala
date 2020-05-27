@@ -24,31 +24,14 @@ class BorrowerBookItemController @Inject()(
   def getAll() = Action.async { implicit request: Request[AnyContent] =>
     borrowerBookItemService.listAllItems map { items =>
       Ok(views.html.BorrowerBookItem.BBI(items) )
-      //Ok("OK")
-
     }
   }
     def getAll2() = Action.async { implicit request: Request[AnyContent] =>
       borrowerBookItemService.listAllItems2 map { items =>
         Ok(views.html.BorrowerBookItem.BBI2(items) )
-        //Ok("OK")
-
       }
-
   }
 
-  def getByBorrowerId(id: Long) = Action.async { implicit request: Request[AnyContent] =>
-    borrowerBookItemService.getItemByBorrowerId(id) map { item =>
-      //Ok(Json.toJson(item))
-      Ok("OK")
-    }
-  }
-  def getByBookItemId(id: Long) = Action.async { implicit request: Request[AnyContent] =>
-    borrowerBookItemService.getItemByBookItemId(id) map { item =>
-      //Ok(Json.toJson(item))
-      Ok("OK")
-    }
-  }
 
   def add() = Action.async { implicit request: Request[AnyContent] =>
     BorrowerBookItemForm.form.bindFromRequest.fold(
@@ -75,7 +58,6 @@ class BorrowerBookItemController @Inject()(
         borrowerBookItemService.updateItem(borrowerItem).map( _ => Redirect(routes.BorrowerBookItemController.getAll2))
       })
   }
-
 
   def delete(borrowerId: Long, BookItemId: Long) = Action.async { implicit request: Request[AnyContent] =>
     borrowerBookItemService.deleteItem(borrowerId, BookItemId) map { res =>
@@ -106,8 +88,6 @@ class BorrowerBookItemController @Inject()(
       data => {
         borrowerBookItemService.getBBIByNumber(data.number)  map { items =>
           Ok(views.html.BorrowerBookItem.BBIByNumber(items) )
-          //Ok("OK")
-
         }
       })
   }
@@ -122,5 +102,23 @@ class BorrowerBookItemController @Inject()(
       Redirect(routes.BorrowerBookItemController.getAll2)
     }
   }
+
+/*
+
+  def getByBorrowerId(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+    borrowerBookItemService.getItemByBorrowerId(id) map { item =>
+      //Ok(Json.toJson(item))
+      Ok("OK")
+    }
+  }
+  def getByBookItemId(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+    borrowerBookItemService.getItemByBookItemId(id) map { item =>
+      //Ok(Json.toJson(item))
+      Ok("OK")
+    }
+  }
+  */
+
+
 
 }

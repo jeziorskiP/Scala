@@ -4,3 +4,5 @@ echo "+----------------------------+"
 echo "| Executing tests using sbt  |" 
 echo "+----------------------------+"
 sbt ++$TRAVIS_SCALA_VERSION test
+
+

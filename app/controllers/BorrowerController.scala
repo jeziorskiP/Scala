@@ -23,7 +23,6 @@ class BorrowerController @Inject()(
 
   def getAll() = Action.async { implicit request: Request[AnyContent] =>
     borrowerService.listAllItems map { items =>
-      //Ok(Json.toJson(items))
       Ok(views.html.Borrower.Borrowers(items) )
     }
   }
@@ -31,13 +30,6 @@ class BorrowerController @Inject()(
 
   def addForm() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.Borrower.AddBorrower())
-  }
-
-
-  def getById(id: Long) = Action.async { implicit request: Request[AnyContent] =>
-    borrowerService.getItem(id) map { item =>
-      Ok(Json.toJson(item))
-    }
   }
 
   def add() = Action.async { implicit request: Request[AnyContent] =>
@@ -71,13 +63,14 @@ class BorrowerController @Inject()(
     borrowerService.getItem(id) map { item =>
 
       Ok(views.html.Borrower.Edit(item) )
-     // Ok("OK" )
     }
   }
 
   def delete(id: Long) = Action.async { implicit request: Request[AnyContent] =>
-    borrowerService.deleteItem(id) map { res =>
+    borrowerService.deleteItem(id).map { res =>
       Redirect(routes.BorrowerController.getAll)
+    }.recover {
+      case e: Throwable => BadRequest( views.html.errors.onError(e) )
     }
   }
 
@@ -89,9 +82,13 @@ class BorrowerController @Inject()(
     borrowerService.getItem(id) map { item =>
 
       Ok(views.html.Borrower.Pay(item) )
-      // Ok("OK" )
     }
   }
-
-
+/*
+  def getById(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+    borrowerService.getItem(id) map { item =>
+      Ok(Json.toJson(item))
+    }
+  }
+*/
 }

@@ -1,0 +1,48 @@
+@(todos: Seq[Todo])(implicit request: RequestHeader)
+
+@main("Lista Todo") {
+
+
+    <div id="pn">
+        <h3>Zadania</h3>
+        <div id="exercisesTable">
+            <table class="table table-condensed" id="catalogIndexTable">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nazwa</td>
+                        <td>Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(todo <- todos){
+                        <tr class="clientRow">
+                            <td class="">@todo.id</td>
+                            <td class="">@todo.name</td>
+                            <td class="">@todo.isComplete</td>
+                            <td class="">
+                                <form action="@routes.TodoController.delete(todo.id)" method="get">
+                                    <input type="submit" value="Delete single record"/>
+                                </form>
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <form method="post" action="@routes.TodoController.add()">
+        @helper.CSRF.formField
+        <input type="text" name="name"></input>
+        <input type="text" name="isComplete"></input>
+        <input type="submit"></input>
+    </form>
+
+
+}

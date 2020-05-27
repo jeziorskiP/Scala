@@ -15,6 +15,28 @@
             <a class="btn btn-success" href="@routes.BooksController.addForm()">DODAJ</a>
         </div>
         </br>
+
+        <form method="post" action="@routes.BookItemController.getByISBN()">
+            @helper.CSRF.formField
+
+            <input type="hidden" name="book_id" value="0"></input>
+
+            <input type="hidden" name="isComplete" value="false"></input>
+
+            <input type="hidden" name="number" value="0"></input>
+
+            <label for="ISBN">ISBN</label>
+            <input type="text" name="ISBN" ></input>
+
+            <input type="submit" value="Szukaj">
+
+        </br>
+        </br>     </br>
+        </form>
+
+
+
+
         <div id="exercisesTable">
             <table class="table table-condensed" id="catalogIndexTable">
                 <thead>

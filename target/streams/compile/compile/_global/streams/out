@@ -1,4 +1,9 @@
-[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\Global.scala:8:16: method onBadRequest overrides nothing[0m
-[0m[[0m[31merror[0m] [0m[0m  override def onBadRequest(request: RequestHeader, error: String) = {[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\conf\routes:30:1: value getById is not a member of controllers.BorrowerController[0m
+[0m[[0m[31merror[0m] [0m[0mGET     /borrower/:id                           controllers.BorrowerController.getById(id: Long)[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\conf\routes:40:1: value getById is not a member of controllers.BookItemController[0m
+[0m[[0m[31merror[0m] [0m[0mGET     /bookitem/:id                           controllers.BookItemController.getById(id: Long)[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\conf\routes:53:1: value getByBookItemId is not a member of controllers.BorrowerBookItemController[0m
+[0m[[0m[31merror[0m] [0m[0mGET     /borrowerbookitem/bi/:id                controllers.BorrowerBookItemController.getByBookItemId(id: Long)[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\conf\routes:54:1: value getByBorrowerId is not a member of controllers.BorrowerBookItemController[0m
+[0m[[0m[31merror[0m] [0m[0mGET     /borrowerbookitem/br/:id                controllers.BorrowerBookItemController.getByBorrowerId(id: Long)[0m
+[0m[[0m[31merror[0m] [0m[0mfour errors found[0m

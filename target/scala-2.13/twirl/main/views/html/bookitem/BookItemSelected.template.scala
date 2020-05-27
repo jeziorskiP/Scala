@@ -32,6 +32,10 @@ Seq[Any](format.raw/*1.61*/("""
     """),format.raw/*7.5*/("""<div id="pn">
         <h1 style="font-size: 40px">Spis egzemplarzy-selected</h1>
         </br>
+        <form action=""""),_display_(/*10.24*/routes/*10.30*/.HomeController.index),format.raw/*10.51*/("""" method="get">
+            <input type="submit" value="Home"/>
+        </form>
+        </br>
         <div id="exercisesTable">
             <table class="table table-striped" id="catalogIndexTable"  >
                 <thead style="font-size: 25px">
@@ -44,30 +48,30 @@ Seq[Any](format.raw/*1.61*/("""
                     </tr>
                 </thead>
                 <tbody style="font-size: 15px;">
-                """),_display_(/*22.18*/for(bookitem <- bookitems) yield /*22.44*/{_display_(Seq[Any](format.raw/*22.45*/("""
-                    """),format.raw/*23.21*/("""<tr class="clientRow" >
-                        <td class="">"""),_display_(/*24.39*/bookitem/*24.47*/.id),format.raw/*24.50*/("""</td>
-                        <td class="">"""),_display_(/*25.39*/bookitem/*25.47*/.number),format.raw/*25.54*/("""</td>
-                        <td class="">"""),_display_(/*26.39*/bookitem/*26.47*/.ISBN),format.raw/*26.52*/("""</td>
-                        <td class="">"""),_display_(/*27.39*/bookitem/*27.47*/.isComplete),format.raw/*27.58*/("""</td>
-                        """),_display_(/*28.26*/if(bookitem.isComplete == true)/*28.57*/{_display_(Seq[Any](format.raw/*28.58*/("""
-                            """),format.raw/*29.29*/("""<td class="">
-                                <form action=""""),_display_(/*30.48*/routes/*30.54*/.BookItemController.delete(bookitem.id)),format.raw/*30.93*/("""" method="get">
+                """),_display_(/*26.18*/for(bookitem <- bookitems) yield /*26.44*/{_display_(Seq[Any](format.raw/*26.45*/("""
+                    """),format.raw/*27.21*/("""<tr class="clientRow" >
+                        <td class="">"""),_display_(/*28.39*/bookitem/*28.47*/.id),format.raw/*28.50*/("""</td>
+                        <td class="">"""),_display_(/*29.39*/bookitem/*29.47*/.number),format.raw/*29.54*/("""</td>
+                        <td class="">"""),_display_(/*30.39*/bookitem/*30.47*/.ISBN),format.raw/*30.52*/("""</td>
+                        <td class="">"""),_display_(/*31.39*/bookitem/*31.47*/.isComplete),format.raw/*31.58*/("""</td>
+                        """),_display_(/*32.26*/if(bookitem.isComplete == true)/*32.57*/{_display_(Seq[Any](format.raw/*32.58*/("""
+                            """),format.raw/*33.29*/("""<td class="">
+                                <form action=""""),_display_(/*34.48*/routes/*34.54*/.BookItemController.delete(bookitem.id)),format.raw/*34.93*/("""" method="get">
                                     <input type="submit" value="Usuń"/>
                                 </form>
                             </td>
-                        """)))}),format.raw/*34.26*/("""
-                        """),_display_(/*35.26*/if(bookitem.isComplete == false)/*35.58*/{_display_(Seq[Any](format.raw/*35.59*/("""
-                            """),format.raw/*36.29*/("""<td class="">
+                        """)))}),format.raw/*38.26*/("""
+                        """),_display_(/*39.26*/if(bookitem.isComplete == false)/*39.58*/{_display_(Seq[Any](format.raw/*39.59*/("""
+                            """),format.raw/*40.29*/("""<td class="">
                                 ---------
                             </td>
-                        """)))}),format.raw/*39.26*/("""
+                        """)))}),format.raw/*43.26*/("""
 
 
 
-                    """),format.raw/*43.21*/("""</tr>
-                """)))}),format.raw/*44.18*/("""
-                """),format.raw/*45.17*/("""</tbody>
+                    """),format.raw/*47.21*/("""</tr>
+                """)))}),format.raw/*48.18*/("""
+                """),format.raw/*49.17*/("""</tbody>
             </table>
 
         </div>
@@ -75,17 +79,17 @@ Seq[Any](format.raw/*1.61*/("""
 
 
     <style>
-        td"""),format.raw/*53.11*/("""{"""),format.raw/*53.12*/("""
-            """),format.raw/*54.13*/("""border: solid;
-        """),format.raw/*55.9*/("""}"""),format.raw/*55.10*/("""
-        """),format.raw/*56.9*/("""th"""),format.raw/*56.11*/("""{"""),format.raw/*56.12*/("""
-            """),format.raw/*57.13*/("""border: solid;
-        """),format.raw/*58.9*/("""}"""),format.raw/*58.10*/("""
+        td"""),format.raw/*57.11*/("""{"""),format.raw/*57.12*/("""
+            """),format.raw/*58.13*/("""border: solid;
+        """),format.raw/*59.9*/("""}"""),format.raw/*59.10*/("""
+        """),format.raw/*60.9*/("""th"""),format.raw/*60.11*/("""{"""),format.raw/*60.12*/("""
+            """),format.raw/*61.13*/("""border: solid;
+        """),format.raw/*62.9*/("""}"""),format.raw/*62.10*/("""
 
 
-    """),format.raw/*61.5*/("""</style>
+    """),format.raw/*65.5*/("""</style>
     </div>
-""")))}),format.raw/*63.2*/("""
+""")))}),format.raw/*67.2*/("""
 """))
       }
     }
@@ -102,11 +106,11 @@ Seq[Any](format.raw/*1.61*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-05-16T22:52:09.581
+                  DATE: 2020-05-27T13:50:18.651
                   SOURCE: D:/Sources/Test2/play-samples-play-scala-hello-world-tutorial/app/views/bookitem/BookItemSelected.scala.html
-                  HASH: 43cf11320e12e0116d74ca73a55379dbe69792df
-                  MATRIX: 770->1|924->60|954->65|995->98|1034->100|1072->112|1707->720|1749->746|1788->747|1838->769|1928->832|1945->840|1969->843|2041->888|2058->896|2086->903|2158->948|2175->956|2201->961|2273->1006|2290->1014|2322->1025|2381->1057|2421->1088|2460->1089|2518->1119|2607->1181|2622->1187|2682->1226|2904->1417|2958->1444|2999->1476|3038->1477|3096->1507|3245->1625|3301->1653|3356->1677|3402->1695|3509->1774|3538->1775|3580->1789|3631->1813|3660->1814|3697->1824|3727->1826|3756->1827|3798->1841|3849->1865|3878->1866|3915->1876|3968->1899
-                  LINES: 21->1|26->1|28->3|28->3|28->3|32->7|47->22|47->22|47->22|48->23|49->24|49->24|49->24|50->25|50->25|50->25|51->26|51->26|51->26|52->27|52->27|52->27|53->28|53->28|53->28|54->29|55->30|55->30|55->30|59->34|60->35|60->35|60->35|61->36|64->39|68->43|69->44|70->45|78->53|78->53|79->54|80->55|80->55|81->56|81->56|81->56|82->57|83->58|83->58|86->61|88->63
+                  HASH: 7eb34a1fda4e390c8ae560e59977da5a0a936b0d
+                  MATRIX: 770->1|924->60|954->65|995->98|1034->100|1072->112|1220->233|1235->239|1277->260|1912->868|1954->894|1993->895|2043->917|2133->980|2150->988|2174->991|2246->1036|2263->1044|2291->1051|2363->1096|2380->1104|2406->1109|2478->1154|2495->1162|2527->1173|2586->1205|2626->1236|2665->1237|2723->1267|2812->1329|2827->1335|2887->1374|3109->1565|3163->1592|3204->1624|3243->1625|3301->1655|3450->1773|3506->1801|3561->1825|3607->1843|3714->1922|3743->1923|3785->1937|3836->1961|3865->1962|3902->1972|3932->1974|3961->1975|4003->1989|4054->2013|4083->2014|4120->2024|4173->2047
+                  LINES: 21->1|26->1|28->3|28->3|28->3|32->7|35->10|35->10|35->10|51->26|51->26|51->26|52->27|53->28|53->28|53->28|54->29|54->29|54->29|55->30|55->30|55->30|56->31|56->31|56->31|57->32|57->32|57->32|58->33|59->34|59->34|59->34|63->38|64->39|64->39|64->39|65->40|68->43|72->47|73->48|74->49|82->57|82->57|83->58|84->59|84->59|85->60|85->60|85->60|86->61|87->62|87->62|90->65|92->67
                   -- GENERATED --
               */
           

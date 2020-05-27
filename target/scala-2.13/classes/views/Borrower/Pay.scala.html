@@ -1,0 +1,49 @@
+@(borrower: Option[Borrower])(implicit request: RequestHeader)
+
+@main("Edycja wypożyczającego") {
+
+
+    <div id="pn">
+        <h1 style="font-size: 40px">Zmiana salda</h1>
+        </br>
+        <form action="@routes.BorrowerController.getAll()" method="get">
+            <input type="submit" value="Powrót"/>
+        </form>
+
+        </br>
+
+
+    <form method="post" action="@routes.BorrowerController.update(borrower.head.id)">
+        @helper.CSRF.formField
+        <input type="hidden" name="number" value="@borrower.head.number"></input>
+
+        <input type="hidden" name="Name" value="@borrower.head.Name"></input>
+
+        <input type="hidden" name="Surname" value="@borrower.head.Surname"></input>
+
+        <input type="hidden" name="Address" value="@borrower.head.Address"></input>
+
+
+
+        <label for="Balance">Do zapłaty</label>
+        <label for="Balance">@borrower.head.Balance</label>
+
+        </br>
+        <label for="Balance">Po zapłacie</label>
+        <input type="text" name="Balance" value="@borrower.head.Balance"></input>
+    </br>
+        <input type="submit"></input>
+    </form>
+
+    <style>
+        td{
+            border: solid;
+        }
+        th{
+            border: solid;
+        }
+
+
+    </style>
+    </div>
+}

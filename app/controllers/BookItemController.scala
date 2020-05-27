@@ -10,6 +10,7 @@ import services.{BookItemService, BorrowerBookItemService, BorrowerService}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
+
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
@@ -28,17 +29,10 @@ class BookItemController @Inject()(
 
   def getAll() = Action.async { implicit request: Request[AnyContent] =>
     bookItemService.listAllItems map { items =>
-      //Ok("OK")
       Ok(views.html.bookitem.BookItem(items) )
     }
-
   }
 
-  def getById(id: Long) = Action.async { implicit request: Request[AnyContent] =>
-    bookItemService.getItem(id) map { item =>
-      Ok("OK")
-    }
-  }
 
   def add() = Action.async { implicit request: Request[AnyContent] =>
     BookItemForm.form.bindFromRequest.fold(
@@ -75,7 +69,6 @@ class BookItemController @Inject()(
     }
   }
 
-
   def getAllByBookId(bookId : Long) = Action.async { implicit request: Request[AnyContent] =>
     bookItemService.getAllByBookId(bookId) map { items =>
       Ok(views.html.bookitem.BookItem(items) )
@@ -92,7 +85,6 @@ class BookItemController @Inject()(
         Future.successful(BadRequest("Error!"))
       },
       data => {
-
         //get bookId from Number
         bookItemService.getIdByNumber2(data.number) map { items =>
           //Ok("OK")
@@ -101,7 +93,8 @@ class BookItemController @Inject()(
             Ok("Error2")
           }else{
             val qwe = items.head.id
-            val newBorrowerBookItemItem = BorrowerBookItem( borrowerId, qwe, java.time.LocalDate.now.toString, false)
+           // val newBorrowerBookItemItem = BorrowerBookItem( borrowerId, qwe, java.time.LocalDate.now.toString, false)
+            val newBorrowerBookItemItem = BorrowerBookItem( borrowerId, qwe, "2020-05-02", false)
             borrowerBookItemService.addItem(newBorrowerBookItemItem).map( _ => Redirect(routes.BorrowerBookItemController.getAll2))
           }
 
@@ -135,5 +128,14 @@ class BookItemController @Inject()(
         })
   }
 
+
+/*
+
+  def getById(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+    bookItemService.getItem(id) map { item =>
+      Ok("OK")
+    }
+  }
+  */
 
 }

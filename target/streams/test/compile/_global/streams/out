@@ -1,0 +1,10 @@
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\test\Test\StackSpec.scala:28:24: not found: value await[0m
+[0m[[0m[31merror[0m] [0m[0m        val response = await (ws.url("http://localhost:" + port).get()) //1[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\test\Test\StackSpec.scala:28:34: object url is not a member of package play.api.libs.ws[0m
+[0m[[0m[31merror[0m] [0m[0m        val response = await (ws.url("http://localhost:" + port).get()) //1[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\test\Test\StackSpec.scala:29:17: not found: value WS[0m
+[0m[[0m[31merror[0m] [0m[0m        val x = WS.url("http://example.com/feed").get()[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m

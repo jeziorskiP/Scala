@@ -1,0 +1,16 @@
+@(throwable: Throwable)
+
+@main("onError Happened") {
+
+    </br>
+    <form action="@routes.HomeController.index" method="get">
+        <input type="submit" value="Home"/>
+    </form>
+    </br>
+
+    <h1>onError Happened</h1>
+    <p>@throwable.getMessage</p>
+
+
+
+}

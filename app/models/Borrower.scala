@@ -87,11 +87,7 @@ class BorrowerList @Inject()(
       bo <- TableQuery[BorrowerTableDef] if bo.number === number
     }yield (bo.id)
     dbConfig.db.run(query.result)
-    /*
-    val q = TableQuery[BorrowerBookItemTableDef] join TableQuery[BorrowerTableDef] on (_.borrowerId === _.id ) join  TableQuery[BookItemTableDef] on (_ === _.id)
-      dbConfig.db.run(q.result)
-      dbConfig.db.run(bookItemList.result)
-  */
+
   }
 
 

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Sources/Test2/play-samples-play-scala-hello-world-tutorial/conf/routes
-// @DATE:Sun May 17 14:50:07 CEST 2020
+// @DATE:Wed May 27 11:38:01 CEST 2020
 
 package router
 
@@ -84,7 +84,6 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """books/delete/""" + "$" + """id<[^/]+>""", """controllers.BooksController.delete(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower""", """controllers.BorrowerController.getAll"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/addForm""", """controllers.BorrowerController.addForm"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/""" + "$" + """id<[^/]+>""", """controllers.BorrowerController.getById(id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/add""", """controllers.BorrowerController.add"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/update/""" + "$" + """id<[^/]+>""", """controllers.BorrowerController.update(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/edit/""" + "$" + """id<[^/]+>""", """controllers.BorrowerController.edit(id:Long)"""),
@@ -92,7 +91,6 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/addBookToBorrower/""" + "$" + """borrowerId<[^/]+>""", """controllers.BorrowerController.addBookToBorrower(borrowerId:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrower/pay/""" + "$" + """id<[^/]+>""", """controllers.BorrowerController.pay(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """bookitem""", """controllers.BookItemController.getAll"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """bookitem/""" + "$" + """id<[^/]+>""", """controllers.BookItemController.getById(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """bookitemByBook/""" + "$" + """id<[^/]+>""", """controllers.BookItemController.getAllByBookId(id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """bookitem/add""", """controllers.BookItemController.add"""),
     ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """bookitem/update/""" + "$" + """id<[^/]+>""", """controllers.BookItemController.update(id:Long)"""),
@@ -101,8 +99,6 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """bookitem/getByISBN""", """controllers.BookItemController.getByISBN"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem""", """controllers.BorrowerBookItemController.getAll"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem2""", """controllers.BorrowerBookItemController.getAll2"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem/bi/""" + "$" + """id<[^/]+>""", """controllers.BorrowerBookItemController.getByBookItemId(id:Long)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem/br/""" + "$" + """id<[^/]+>""", """controllers.BorrowerBookItemController.getByBorrowerId(id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem/add""", """controllers.BorrowerBookItemController.add"""),
     ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem/update/""" + "$" + """id<[^/]+>""", """controllers.BorrowerBookItemController.update(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """borrowerbookitem/delete/""" + "$" + """borrowerId<[^/]+>/""" + "$" + """BookItemId<[^/]+>""", """controllers.BorrowerBookItemController.delete(borrowerId:Long, BookItemId:Long)"""),
@@ -426,29 +422,11 @@ class Routes(
     )
   )
 
-  // @LINE:30
-  private[this] lazy val controllers_BorrowerController_getById17_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/"), DynamicPart("id", """[^/]+""",true)))
-  )
-  private[this] lazy val controllers_BorrowerController_getById17_invoker = createInvoker(
-    BorrowerController_3.getById(fakeValue[Long]),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.BorrowerController",
-      "getById",
-      Seq(classOf[Long]),
-      "GET",
-      this.prefix + """borrower/""" + "$" + """id<[^/]+>""",
-      """""",
-      Seq()
-    )
-  )
-
   // @LINE:31
-  private[this] lazy val controllers_BorrowerController_add18_route = Route("POST",
+  private[this] lazy val controllers_BorrowerController_add17_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/add")))
   )
-  private[this] lazy val controllers_BorrowerController_add18_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerController_add17_invoker = createInvoker(
     BorrowerController_3.add,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -457,16 +435,16 @@ class Routes(
       Nil,
       "POST",
       this.prefix + """borrower/add""",
-      """""",
+      """GET     /borrower/:id                           controllers.BorrowerController.getById(id: Long)""",
       Seq()
     )
   )
 
   // @LINE:32
-  private[this] lazy val controllers_BorrowerController_update19_route = Route("POST",
+  private[this] lazy val controllers_BorrowerController_update18_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/update/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerController_update19_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerController_update18_invoker = createInvoker(
     BorrowerController_3.update(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -481,10 +459,10 @@ class Routes(
   )
 
   // @LINE:33
-  private[this] lazy val controllers_BorrowerController_edit20_route = Route("GET",
+  private[this] lazy val controllers_BorrowerController_edit19_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/edit/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerController_edit20_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerController_edit19_invoker = createInvoker(
     BorrowerController_3.edit(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -499,10 +477,10 @@ class Routes(
   )
 
   // @LINE:34
-  private[this] lazy val controllers_BorrowerController_delete21_route = Route("GET",
+  private[this] lazy val controllers_BorrowerController_delete20_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/delete/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerController_delete21_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerController_delete20_invoker = createInvoker(
     BorrowerController_3.delete(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -517,10 +495,10 @@ class Routes(
   )
 
   // @LINE:35
-  private[this] lazy val controllers_BorrowerController_addBookToBorrower22_route = Route("GET",
+  private[this] lazy val controllers_BorrowerController_addBookToBorrower21_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/addBookToBorrower/"), DynamicPart("borrowerId", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerController_addBookToBorrower22_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerController_addBookToBorrower21_invoker = createInvoker(
     BorrowerController_3.addBookToBorrower(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -535,10 +513,10 @@ class Routes(
   )
 
   // @LINE:36
-  private[this] lazy val controllers_BorrowerController_pay23_route = Route("GET",
+  private[this] lazy val controllers_BorrowerController_pay22_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrower/pay/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerController_pay23_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerController_pay22_invoker = createInvoker(
     BorrowerController_3.pay(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -553,10 +531,10 @@ class Routes(
   )
 
   // @LINE:39
-  private[this] lazy val controllers_BookItemController_getAll24_route = Route("GET",
+  private[this] lazy val controllers_BookItemController_getAll23_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitem")))
   )
-  private[this] lazy val controllers_BookItemController_getAll24_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_getAll23_invoker = createInvoker(
     BookItemController_7.getAll,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -570,29 +548,11 @@ class Routes(
     )
   )
 
-  // @LINE:40
-  private[this] lazy val controllers_BookItemController_getById25_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitem/"), DynamicPart("id", """[^/]+""",true)))
-  )
-  private[this] lazy val controllers_BookItemController_getById25_invoker = createInvoker(
-    BookItemController_7.getById(fakeValue[Long]),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.BookItemController",
-      "getById",
-      Seq(classOf[Long]),
-      "GET",
-      this.prefix + """bookitem/""" + "$" + """id<[^/]+>""",
-      """""",
-      Seq()
-    )
-  )
-
   // @LINE:41
-  private[this] lazy val controllers_BookItemController_getAllByBookId26_route = Route("GET",
+  private[this] lazy val controllers_BookItemController_getAllByBookId24_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitemByBook/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BookItemController_getAllByBookId26_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_getAllByBookId24_invoker = createInvoker(
     BookItemController_7.getAllByBookId(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -601,16 +561,16 @@ class Routes(
       Seq(classOf[Long]),
       "GET",
       this.prefix + """bookitemByBook/""" + "$" + """id<[^/]+>""",
-      """""",
+      """GET     /bookitem/:id                           controllers.BookItemController.getById(id: Long)""",
       Seq()
     )
   )
 
   // @LINE:42
-  private[this] lazy val controllers_BookItemController_add27_route = Route("POST",
+  private[this] lazy val controllers_BookItemController_add25_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitem/add")))
   )
-  private[this] lazy val controllers_BookItemController_add27_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_add25_invoker = createInvoker(
     BookItemController_7.add,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -625,10 +585,10 @@ class Routes(
   )
 
   // @LINE:43
-  private[this] lazy val controllers_BookItemController_update28_route = Route("PUT",
+  private[this] lazy val controllers_BookItemController_update26_route = Route("PUT",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitem/update/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BookItemController_update28_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_update26_invoker = createInvoker(
     BookItemController_7.update(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -643,10 +603,10 @@ class Routes(
   )
 
   // @LINE:44
-  private[this] lazy val controllers_BookItemController_delete29_route = Route("GET",
+  private[this] lazy val controllers_BookItemController_delete27_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitem/delete/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BookItemController_delete29_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_delete27_invoker = createInvoker(
     BookItemController_7.delete(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -661,10 +621,10 @@ class Routes(
   )
 
   // @LINE:45
-  private[this] lazy val controllers_BookItemController_addBIB30_route = Route("POST",
+  private[this] lazy val controllers_BookItemController_addBIB28_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("addBIB/borrowerId")))
   )
-  private[this] lazy val controllers_BookItemController_addBIB30_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_addBIB28_invoker = createInvoker(
     BookItemController_7.addBIB(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -679,10 +639,10 @@ class Routes(
   )
 
   // @LINE:47
-  private[this] lazy val controllers_BookItemController_getByISBN31_route = Route("POST",
+  private[this] lazy val controllers_BookItemController_getByISBN29_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("bookitem/getByISBN")))
   )
-  private[this] lazy val controllers_BookItemController_getByISBN31_invoker = createInvoker(
+  private[this] lazy val controllers_BookItemController_getByISBN29_invoker = createInvoker(
     BookItemController_7.getByISBN,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -697,10 +657,10 @@ class Routes(
   )
 
   // @LINE:51
-  private[this] lazy val controllers_BorrowerBookItemController_getAll32_route = Route("GET",
+  private[this] lazy val controllers_BorrowerBookItemController_getAll30_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem")))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_getAll32_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_getAll30_invoker = createInvoker(
     BorrowerBookItemController_0.getAll,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -715,10 +675,10 @@ class Routes(
   )
 
   // @LINE:52
-  private[this] lazy val controllers_BorrowerBookItemController_getAll233_route = Route("GET",
+  private[this] lazy val controllers_BorrowerBookItemController_getAll231_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem2")))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_getAll233_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_getAll231_invoker = createInvoker(
     BorrowerBookItemController_0.getAll2,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -732,47 +692,11 @@ class Routes(
     )
   )
 
-  // @LINE:53
-  private[this] lazy val controllers_BorrowerBookItemController_getByBookItemId34_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/bi/"), DynamicPart("id", """[^/]+""",true)))
-  )
-  private[this] lazy val controllers_BorrowerBookItemController_getByBookItemId34_invoker = createInvoker(
-    BorrowerBookItemController_0.getByBookItemId(fakeValue[Long]),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.BorrowerBookItemController",
-      "getByBookItemId",
-      Seq(classOf[Long]),
-      "GET",
-      this.prefix + """borrowerbookitem/bi/""" + "$" + """id<[^/]+>""",
-      """""",
-      Seq()
-    )
-  )
-
-  // @LINE:54
-  private[this] lazy val controllers_BorrowerBookItemController_getByBorrowerId35_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/br/"), DynamicPart("id", """[^/]+""",true)))
-  )
-  private[this] lazy val controllers_BorrowerBookItemController_getByBorrowerId35_invoker = createInvoker(
-    BorrowerBookItemController_0.getByBorrowerId(fakeValue[Long]),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.BorrowerBookItemController",
-      "getByBorrowerId",
-      Seq(classOf[Long]),
-      "GET",
-      this.prefix + """borrowerbookitem/br/""" + "$" + """id<[^/]+>""",
-      """""",
-      Seq()
-    )
-  )
-
   // @LINE:55
-  private[this] lazy val controllers_BorrowerBookItemController_add36_route = Route("POST",
+  private[this] lazy val controllers_BorrowerBookItemController_add32_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/add")))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_add36_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_add32_invoker = createInvoker(
     BorrowerBookItemController_0.add,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -781,16 +705,17 @@ class Routes(
       Nil,
       "POST",
       this.prefix + """borrowerbookitem/add""",
-      """""",
+      """GET     /borrowerbookitem/bi/:id                controllers.BorrowerBookItemController.getByBookItemId(id: Long)
+GET     /borrowerbookitem/br/:id                controllers.BorrowerBookItemController.getByBorrowerId(id: Long)""",
       Seq()
     )
   )
 
   // @LINE:56
-  private[this] lazy val controllers_BorrowerBookItemController_update37_route = Route("PUT",
+  private[this] lazy val controllers_BorrowerBookItemController_update33_route = Route("PUT",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/update/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_update37_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_update33_invoker = createInvoker(
     BorrowerBookItemController_0.update(fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -805,10 +730,10 @@ class Routes(
   )
 
   // @LINE:57
-  private[this] lazy val controllers_BorrowerBookItemController_delete38_route = Route("GET",
+  private[this] lazy val controllers_BorrowerBookItemController_delete34_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/delete/"), DynamicPart("borrowerId", """[^/]+""",true), StaticPart("/"), DynamicPart("BookItemId", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_delete38_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_delete34_invoker = createInvoker(
     BorrowerBookItemController_0.delete(fakeValue[Long], fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -823,10 +748,10 @@ class Routes(
   )
 
   // @LINE:58
-  private[this] lazy val controllers_BorrowerBookItemController_getBBIByNumber39_route = Route("GET",
+  private[this] lazy val controllers_BorrowerBookItemController_getBBIByNumber35_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/getBBIByNumber/")))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_getBBIByNumber39_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_getBBIByNumber35_invoker = createInvoker(
     BorrowerBookItemController_0.getBBIByNumber,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -841,10 +766,10 @@ class Routes(
   )
 
   // @LINE:59
-  private[this] lazy val controllers_BorrowerBookItemController_filter40_route = Route("GET",
+  private[this] lazy val controllers_BorrowerBookItemController_filter36_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/filter")))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_filter40_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_filter36_invoker = createInvoker(
     BorrowerBookItemController_0.filter,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -859,10 +784,10 @@ class Routes(
   )
 
   // @LINE:60
-  private[this] lazy val controllers_BorrowerBookItemController_finish41_route = Route("POST",
+  private[this] lazy val controllers_BorrowerBookItemController_finish37_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("borrowerbookitem/finish/"), DynamicPart("borrowerId", """[^/]+""",true), StaticPart("/"), DynamicPart("BookItemId", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_BorrowerBookItemController_finish41_invoker = createInvoker(
+  private[this] lazy val controllers_BorrowerBookItemController_finish37_invoker = createInvoker(
     BorrowerBookItemController_0.finish(fakeValue[Long], fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -877,10 +802,10 @@ class Routes(
   )
 
   // @LINE:66
-  private[this] lazy val controllers_TestController_index42_route = Route("GET",
+  private[this] lazy val controllers_TestController_index38_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix)))
   )
-  private[this] lazy val controllers_TestController_index42_invoker = createInvoker(
+  private[this] lazy val controllers_TestController_index38_invoker = createInvoker(
     TestController_2.index,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -895,10 +820,10 @@ class Routes(
   )
 
   // @LINE:67
-  private[this] lazy val controllers_TestController_explore43_route = Route("GET",
+  private[this] lazy val controllers_TestController_explore39_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("explore")))
   )
-  private[this] lazy val controllers_TestController_explore43_invoker = createInvoker(
+  private[this] lazy val controllers_TestController_explore39_invoker = createInvoker(
     TestController_2.explore,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -913,10 +838,10 @@ class Routes(
   )
 
   // @LINE:68
-  private[this] lazy val controllers_TestController_tutorial44_route = Route("GET",
+  private[this] lazy val controllers_TestController_tutorial40_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("tutorial")))
   )
-  private[this] lazy val controllers_TestController_tutorial44_invoker = createInvoker(
+  private[this] lazy val controllers_TestController_tutorial40_invoker = createInvoker(
     TestController_2.tutorial,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -931,10 +856,10 @@ class Routes(
   )
 
   // @LINE:70
-  private[this] lazy val controllers_Assets_versioned45_route = Route("GET",
+  private[this] lazy val controllers_Assets_versioned41_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned45_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned41_invoker = createInvoker(
     Assets_5.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -1053,178 +978,154 @@ class Routes(
         controllers_BorrowerController_addForm16_invoker.call(BorrowerController_3.addForm)
       }
   
-    // @LINE:30
-    case controllers_BorrowerController_getById17_route(params@_) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerController_getById17_invoker.call(BorrowerController_3.getById(id))
-      }
-  
     // @LINE:31
-    case controllers_BorrowerController_add18_route(params@_) =>
+    case controllers_BorrowerController_add17_route(params@_) =>
       call { 
-        controllers_BorrowerController_add18_invoker.call(BorrowerController_3.add)
+        controllers_BorrowerController_add17_invoker.call(BorrowerController_3.add)
       }
   
     // @LINE:32
-    case controllers_BorrowerController_update19_route(params@_) =>
+    case controllers_BorrowerController_update18_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerController_update19_invoker.call(BorrowerController_3.update(id))
+        controllers_BorrowerController_update18_invoker.call(BorrowerController_3.update(id))
       }
   
     // @LINE:33
-    case controllers_BorrowerController_edit20_route(params@_) =>
+    case controllers_BorrowerController_edit19_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerController_edit20_invoker.call(BorrowerController_3.edit(id))
+        controllers_BorrowerController_edit19_invoker.call(BorrowerController_3.edit(id))
       }
   
     // @LINE:34
-    case controllers_BorrowerController_delete21_route(params@_) =>
+    case controllers_BorrowerController_delete20_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerController_delete21_invoker.call(BorrowerController_3.delete(id))
+        controllers_BorrowerController_delete20_invoker.call(BorrowerController_3.delete(id))
       }
   
     // @LINE:35
-    case controllers_BorrowerController_addBookToBorrower22_route(params@_) =>
+    case controllers_BorrowerController_addBookToBorrower21_route(params@_) =>
       call(params.fromPath[Long]("borrowerId", None)) { (borrowerId) =>
-        controllers_BorrowerController_addBookToBorrower22_invoker.call(BorrowerController_3.addBookToBorrower(borrowerId))
+        controllers_BorrowerController_addBookToBorrower21_invoker.call(BorrowerController_3.addBookToBorrower(borrowerId))
       }
   
     // @LINE:36
-    case controllers_BorrowerController_pay23_route(params@_) =>
+    case controllers_BorrowerController_pay22_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerController_pay23_invoker.call(BorrowerController_3.pay(id))
+        controllers_BorrowerController_pay22_invoker.call(BorrowerController_3.pay(id))
       }
   
     // @LINE:39
-    case controllers_BookItemController_getAll24_route(params@_) =>
+    case controllers_BookItemController_getAll23_route(params@_) =>
       call { 
-        controllers_BookItemController_getAll24_invoker.call(BookItemController_7.getAll)
-      }
-  
-    // @LINE:40
-    case controllers_BookItemController_getById25_route(params@_) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BookItemController_getById25_invoker.call(BookItemController_7.getById(id))
+        controllers_BookItemController_getAll23_invoker.call(BookItemController_7.getAll)
       }
   
     // @LINE:41
-    case controllers_BookItemController_getAllByBookId26_route(params@_) =>
+    case controllers_BookItemController_getAllByBookId24_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BookItemController_getAllByBookId26_invoker.call(BookItemController_7.getAllByBookId(id))
+        controllers_BookItemController_getAllByBookId24_invoker.call(BookItemController_7.getAllByBookId(id))
       }
   
     // @LINE:42
-    case controllers_BookItemController_add27_route(params@_) =>
+    case controllers_BookItemController_add25_route(params@_) =>
       call { 
-        controllers_BookItemController_add27_invoker.call(BookItemController_7.add)
+        controllers_BookItemController_add25_invoker.call(BookItemController_7.add)
       }
   
     // @LINE:43
-    case controllers_BookItemController_update28_route(params@_) =>
+    case controllers_BookItemController_update26_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BookItemController_update28_invoker.call(BookItemController_7.update(id))
+        controllers_BookItemController_update26_invoker.call(BookItemController_7.update(id))
       }
   
     // @LINE:44
-    case controllers_BookItemController_delete29_route(params@_) =>
+    case controllers_BookItemController_delete27_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BookItemController_delete29_invoker.call(BookItemController_7.delete(id))
+        controllers_BookItemController_delete27_invoker.call(BookItemController_7.delete(id))
       }
   
     // @LINE:45
-    case controllers_BookItemController_addBIB30_route(params@_) =>
+    case controllers_BookItemController_addBIB28_route(params@_) =>
       call(params.fromQuery[Long]("borrowerId", None)) { (borrowerId) =>
-        controllers_BookItemController_addBIB30_invoker.call(BookItemController_7.addBIB(borrowerId))
+        controllers_BookItemController_addBIB28_invoker.call(BookItemController_7.addBIB(borrowerId))
       }
   
     // @LINE:47
-    case controllers_BookItemController_getByISBN31_route(params@_) =>
+    case controllers_BookItemController_getByISBN29_route(params@_) =>
       call { 
-        controllers_BookItemController_getByISBN31_invoker.call(BookItemController_7.getByISBN)
+        controllers_BookItemController_getByISBN29_invoker.call(BookItemController_7.getByISBN)
       }
   
     // @LINE:51
-    case controllers_BorrowerBookItemController_getAll32_route(params@_) =>
+    case controllers_BorrowerBookItemController_getAll30_route(params@_) =>
       call { 
-        controllers_BorrowerBookItemController_getAll32_invoker.call(BorrowerBookItemController_0.getAll)
+        controllers_BorrowerBookItemController_getAll30_invoker.call(BorrowerBookItemController_0.getAll)
       }
   
     // @LINE:52
-    case controllers_BorrowerBookItemController_getAll233_route(params@_) =>
+    case controllers_BorrowerBookItemController_getAll231_route(params@_) =>
       call { 
-        controllers_BorrowerBookItemController_getAll233_invoker.call(BorrowerBookItemController_0.getAll2)
-      }
-  
-    // @LINE:53
-    case controllers_BorrowerBookItemController_getByBookItemId34_route(params@_) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerBookItemController_getByBookItemId34_invoker.call(BorrowerBookItemController_0.getByBookItemId(id))
-      }
-  
-    // @LINE:54
-    case controllers_BorrowerBookItemController_getByBorrowerId35_route(params@_) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerBookItemController_getByBorrowerId35_invoker.call(BorrowerBookItemController_0.getByBorrowerId(id))
+        controllers_BorrowerBookItemController_getAll231_invoker.call(BorrowerBookItemController_0.getAll2)
       }
   
     // @LINE:55
-    case controllers_BorrowerBookItemController_add36_route(params@_) =>
+    case controllers_BorrowerBookItemController_add32_route(params@_) =>
       call { 
-        controllers_BorrowerBookItemController_add36_invoker.call(BorrowerBookItemController_0.add)
+        controllers_BorrowerBookItemController_add32_invoker.call(BorrowerBookItemController_0.add)
       }
   
     // @LINE:56
-    case controllers_BorrowerBookItemController_update37_route(params@_) =>
+    case controllers_BorrowerBookItemController_update33_route(params@_) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_BorrowerBookItemController_update37_invoker.call(BorrowerBookItemController_0.update(id))
+        controllers_BorrowerBookItemController_update33_invoker.call(BorrowerBookItemController_0.update(id))
       }
   
     // @LINE:57
-    case controllers_BorrowerBookItemController_delete38_route(params@_) =>
+    case controllers_BorrowerBookItemController_delete34_route(params@_) =>
       call(params.fromPath[Long]("borrowerId", None), params.fromPath[Long]("BookItemId", None)) { (borrowerId, BookItemId) =>
-        controllers_BorrowerBookItemController_delete38_invoker.call(BorrowerBookItemController_0.delete(borrowerId, BookItemId))
+        controllers_BorrowerBookItemController_delete34_invoker.call(BorrowerBookItemController_0.delete(borrowerId, BookItemId))
       }
   
     // @LINE:58
-    case controllers_BorrowerBookItemController_getBBIByNumber39_route(params@_) =>
+    case controllers_BorrowerBookItemController_getBBIByNumber35_route(params@_) =>
       call { 
-        controllers_BorrowerBookItemController_getBBIByNumber39_invoker.call(BorrowerBookItemController_0.getBBIByNumber)
+        controllers_BorrowerBookItemController_getBBIByNumber35_invoker.call(BorrowerBookItemController_0.getBBIByNumber)
       }
   
     // @LINE:59
-    case controllers_BorrowerBookItemController_filter40_route(params@_) =>
+    case controllers_BorrowerBookItemController_filter36_route(params@_) =>
       call { 
-        controllers_BorrowerBookItemController_filter40_invoker.call(BorrowerBookItemController_0.filter)
+        controllers_BorrowerBookItemController_filter36_invoker.call(BorrowerBookItemController_0.filter)
       }
   
     // @LINE:60
-    case controllers_BorrowerBookItemController_finish41_route(params@_) =>
+    case controllers_BorrowerBookItemController_finish37_route(params@_) =>
       call(params.fromPath[Long]("borrowerId", None), params.fromPath[Long]("BookItemId", None)) { (borrowerId, BookItemId) =>
-        controllers_BorrowerBookItemController_finish41_invoker.call(BorrowerBookItemController_0.finish(borrowerId, BookItemId))
+        controllers_BorrowerBookItemController_finish37_invoker.call(BorrowerBookItemController_0.finish(borrowerId, BookItemId))
       }
   
     // @LINE:66
-    case controllers_TestController_index42_route(params@_) =>
+    case controllers_TestController_index38_route(params@_) =>
       call { 
-        controllers_TestController_index42_invoker.call(TestController_2.index)
+        controllers_TestController_index38_invoker.call(TestController_2.index)
       }
   
     // @LINE:67
-    case controllers_TestController_explore43_route(params@_) =>
+    case controllers_TestController_explore39_route(params@_) =>
       call { 
-        controllers_TestController_explore43_invoker.call(TestController_2.explore)
+        controllers_TestController_explore39_invoker.call(TestController_2.explore)
       }
   
     // @LINE:68
-    case controllers_TestController_tutorial44_route(params@_) =>
+    case controllers_TestController_tutorial40_route(params@_) =>
       call { 
-        controllers_TestController_tutorial44_invoker.call(TestController_2.tutorial)
+        controllers_TestController_tutorial40_invoker.call(TestController_2.tutorial)
       }
   
     // @LINE:70
-    case controllers_Assets_versioned45_route(params@_) =>
+    case controllers_Assets_versioned41_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned45_invoker.call(Assets_5.versioned(path, file))
+        controllers_Assets_versioned41_invoker.call(Assets_5.versioned(path, file))
       }
   }
 }

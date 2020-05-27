@@ -7,7 +7,6 @@ lazy val root = (project in file("."))
     scalaVersion := "2.13.1",
     libraryDependencies ++= Seq(
       guice,
-      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
       "mysql" % "mysql-connector-java" % "8.0.15",
       "com.typesafe.play" %% "play-slick" % "4.0.2",
       "com.typesafe.play" %% "play-slick-evolutions" % "4.0.2"
@@ -19,4 +18,9 @@ lazy val root = (project in file("."))
     )
 
 
+
+
   )
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % "test"
+libraryDependencies += ws
+libraryDependencies += ehcache

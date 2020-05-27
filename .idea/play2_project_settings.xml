@@ -13,6 +13,7 @@
         <entry key="root">
           <value>
             <ProjectSettingsEntry>
+              <option name="sourceDir" value="D:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\app" />
               <option name="confDir" value="D:\Sources\Test2\play-samples-play-scala-hello-world-tutorial\app" />
               <option name="templateImports">
                 <list>

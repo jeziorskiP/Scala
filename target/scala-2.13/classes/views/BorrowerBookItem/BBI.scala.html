@@ -1,0 +1,53 @@
+@(BBIs: Seq[BorrowerBookItem])(implicit request: RequestHeader)
+
+@main("Lista BorrowerBookItem") {
+
+
+    <div id="pn">
+        <h3>Boorowersy + ksiazki</h3>
+        <div id="exercisesTable">
+            <table class="table table-condensed" id="catalogIndexTable">
+                <thead>
+                    <tr>
+                        <td>borrowerId</td>
+                        <td>bookItemId</td>
+                        <td>startTime</td>
+                        <td>completed</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(bbi <- BBIs){
+                        <tr class="clientRow">
+                            <td class="">@bbi.borrowerId</td>
+                            <td class="">@bbi.bookItemId</td>
+                            <td class="">@bbi.startTime</td>
+                            <td class="">@bbi.completed</td>
+                            <td class="">
+                                <form action="@routes.BorrowerBookItemController.delete(bbi.borrowerId, bbi.bookItemId)" method="get">
+                                    <input type="submit" value="Delete single record"/>
+                                </form>
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <form method="post" action="@routes.BorrowerController.add()">
+        @helper.CSRF.formField
+        <input type="text" name="number"></input>
+        <input type="text" name="Name"></input>
+        <input type="text" name="Surname"></input>
+        <input type="text" name="Address"></input>
+        <input type="text" name="Balance"></input>
+        <input type="submit"></input>
+    </form>
+
+
+}

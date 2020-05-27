@@ -1,0 +1,26 @@
+@()(implicit request: RequestHeader)
+
+@main("Lista BorrowerBookItem") {
+
+
+    <div id="pn">
+        <h3>Wyszukaj wypożyczenie dla wskazanego numery książki</h3>
+
+        <form method="get" action="@routes.BorrowerBookItemController.getBBIByNumber">
+            @helper.CSRF.formField
+
+        </br>
+
+            <label for="number">Numer ksiązki</label>
+            <input type="text" name="number"></input>
+        </br>
+            <input type="submit"></input>
+        </form>
+
+</div>
+
+
+
+
+
+}

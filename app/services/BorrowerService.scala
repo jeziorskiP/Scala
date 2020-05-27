@@ -26,12 +26,4 @@ class BorrowerService @Inject()(items: BorrowerList) {
   def listAllItems: Future[Seq[Borrower]] = {
     items.listAll
   }
-
-/*
-  def listAllItems222(number : Int): Future[Long] = {
-    val x = List(items.getByNumber(number))(0)
-    return x
-  }
-
-*/
 }
